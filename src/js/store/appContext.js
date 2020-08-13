@@ -22,7 +22,9 @@ const injectContext = PassedComponent => {
 		);
 
 		useEffect(() => {
-			fetch("https://assets.breatheco.de/apis/fake/contact/agenda/moldovanjason");
+			fetch("https://assets.breatheco.de/apis/fake/contact/agenda/moldovanjason")
+				.then(red => red.json())
+				.then(data => setState({ ...state, store: { allContacts: data } }));
 		}, []);
 
 		// the initial value for the context its not null anymore, but the current state of this component,

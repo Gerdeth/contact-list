@@ -21,10 +21,10 @@ const ContactCard = props => {
 						</div>
 						<div className="col-12 col-sm-6 col-md-9 text-center text-sm-left">
 							<div className=" float-right">
-								<button className="btn" onClick={() => props.history.push(`/edit/${props.index}`)}>
+								<button className="btn" onClick={() => props.history.push(`/edit/${props.id}`)}>
 									<i className="fas fa-pencil-alt mr-3" />
 								</button>
-								<button className="btn" onClick={() => actions.deleteContacts(props.index)}>
+								<button className="btn" onClick={() => actions.deleteContacts(props.id)}>
 									<i className="fas fa-trash-alt" />
 								</button>
 							</div>
@@ -66,7 +66,8 @@ ContactCard.propTypes = {
 	name: PropTypes.string,
 	address: PropTypes.string,
 	phone: PropTypes.string,
-	email: PropTypes.string
+	email: PropTypes.string,
+	id: PropTypes.string
 };
 
 /**

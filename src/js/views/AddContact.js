@@ -11,16 +11,16 @@ export const AddContact = props => {
 		email: null
 	});
 
-	function handleSave(actions) {
-		if (props.match.path === "/add") {
-			actions.addContacts(state.name, state.address, state.phone, state.email);
-		} else actions.editContact(state.name, state.address, state.phone, state.email, +props.match.params.index);
-	}
+	// function handleSave(actions) {
+	// 	if (props.match.path === "/add") {
+	// 		actions.addContacts(state.name, state.address, state.phone, state.email);
+	// 	} else actions.editContact(state.name, state.address, state.phone, state.email, +props.match.params.index);
+	// }
 
 	return (
 		<div className="container">
 			<Context.Consumer>
-				{({ store, actions }) => (
+				{({ actions, store }) => (
 					<div>
 						<h1 className="text-center mt-5">Add a new contact</h1>
 						<form>
@@ -69,9 +69,9 @@ export const AddContact = props => {
 								/>
 							</div>
 							<button
-								disabled={!state.name || !state.address || !state.phone || !state.email}
+								// disabled={(!state.name && !state.address) && !state.phone || !state.email}
 								onClick={() => {
-									handleSave(actions);
+									actions.addContacts(state.name, state.address, state.phone, state.email);
 								}}
 								type="button"
 								className="btn btn-primary form-control">

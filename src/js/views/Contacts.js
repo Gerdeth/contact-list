@@ -32,6 +32,7 @@ export const Contacts = () => {
 										email={value.email}
 										key={indexOfContact}
 										index={indexOfContact}
+										id={value.id}
 									/>
 								))}
 							</ul>
