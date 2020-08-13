@@ -11,7 +11,7 @@ const getState = ({ getStore, setStore }) => {
 						"Content-Type": "application/json"
 					},
 					body: JSON.stringify({
-						agenda_slug: "moldovanjason",
+						agenda_slug: "gdan",
 						full_name: name,
 						email: email,
 						address: address,
@@ -20,10 +20,11 @@ const getState = ({ getStore, setStore }) => {
 				})
 					.then(res => res.json())
 					.then(() => {
-						fetch("https://assets.breatheco.de/apis/fake/contact/agenda/moldovanjason")
+						fetch("https://assets.breatheco.de/apis/fake/contact/agenda/gdan")
 							.then(red => red.json())
 							.then(data => setStore({ allContacts: data }));
-					});
+					})
+					.catch(err => alert(err.msg));
 				// build fetch w/ post method body contents - look up in api
 				// in 2nd .then do another fetch to get current contects of database(api)
 				// save data to allContacts
@@ -40,7 +41,7 @@ const getState = ({ getStore, setStore }) => {
 				})
 					.then(res => res.json())
 					.then(() => {
-						fetch("https://assets.breatheco.de/apis/fake/contact/agenda/moldovanjason")
+						fetch("https://assets.breatheco.de/apis/fake/contact/agenda/gdan")
 							.then(red => red.json())
 							.then(data => setStore({ allContacts: data }));
 					});
@@ -55,7 +56,7 @@ const getState = ({ getStore, setStore }) => {
 						"Content-Type": "application/json"
 					},
 					body: JSON.stringify({
-						agenda_slug: "moldovanjason",
+						agenda_slug: "gdan",
 						full_name: name,
 						email: email,
 						address: address,
@@ -64,7 +65,7 @@ const getState = ({ getStore, setStore }) => {
 				})
 					.then(res => res.json())
 					.then(() => {
-						fetch("https://assets.breatheco.de/apis/fake/contact/agenda/moldovanjason")
+						fetch("https://assets.breatheco.de/apis/fake/contact/agenda/gdan")
 							.then(red => red.json())
 							.then(data => setStore({ allContacts: data }));
 					});

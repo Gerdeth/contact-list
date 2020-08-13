@@ -15,7 +15,9 @@ export const EditContact = props => {
 		id: null,
 		phone: null
 	});
-
+	// const updateState=contact=>{
+	//     setState(contact);
+	// }
 	return (
 		<div className="container">
 			<Context.Consumer>

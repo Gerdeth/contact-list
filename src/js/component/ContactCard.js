@@ -6,7 +6,6 @@ import { Context } from "../store/appContext";
 
 const ContactCard = props => {
 	// display contact details from props
-	console.log(props);
 	return (
 		<li className="list-group-item">
 			<Context.Consumer>
