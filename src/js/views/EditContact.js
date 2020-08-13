@@ -8,22 +8,20 @@ export const EditContact = props => {
 		//
 
 		address: null,
-		agenda_slug: null,
-		created_at: null,
+		agenda_slug: "gdan",
 		email: null,
 		full_name: null,
-		id: null,
 		phone: null
 	});
 	// const updateState=contact=>{
 	//     setState(contact);
 	// }
+
 	return (
 		<div className="container">
 			<Context.Consumer>
 				{({ actions, store }) => {
-					var contact = store.allContacts.find(element => element.id == props.match.params.id);
-					setState(contact);
+					var contact = store.allContacts.find(element => element.id == props.match.params.id); // setState(contact);
 
 					return (
 						<div>
@@ -32,8 +30,9 @@ export const EditContact = props => {
 								<div className="form-group">
 									<label>Full Name</label>
 									<input
+										value={state.full_name}
 										onChange={event => {
-											setState({ ...state, name: event.target.value });
+											setState({ ...state, full_name: event.target.value });
 										}}
 										type="text"
 										className="form-control"
@@ -44,37 +43,40 @@ export const EditContact = props => {
 								<div className="form-group">
 									<label>Email</label>
 									<input
+										value={state.email}
 										onChange={event => {
 											setState({ ...state, email: event.target.value });
 										}}
 										type="email"
 										className="form-control"
 										placeholder="Enter email"
-										defaultValue={state.email}
+										defaultValue={contact.email}
 									/>
 								</div>
 								<div className="form-group">
 									<label>Phone</label>
 									<input
+										value={state.phone}
 										onChange={event => {
 											setState({ ...state, phone: event.target.value });
 										}}
 										type="phone"
 										className="form-control"
 										placeholder="Enter phone"
-										defaultValue={state.phone}
+										defaultValue={contact.phone}
 									/>
 								</div>
 								<div className="form-group">
 									<label>Address</label>
 									<input
+										value={state.address}
 										onChange={event => {
 											setState({ ...state, address: event.target.value });
 										}}
 										type="text"
 										className="form-control"
 										placeholder="Enter address"
-										defaultValue={state.address}
+										defaultValue={contact.address}
 									/>
 								</div>
 								<button
@@ -85,7 +87,7 @@ export const EditContact = props => {
 											state.address,
 											state.phone,
 											state.email,
-											state.id
+											contact.id
 										);
 									}}
 									type="button"
