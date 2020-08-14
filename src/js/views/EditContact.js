@@ -4,29 +4,27 @@ import { Context } from "../store/appContext";
 import PropTypes from "prop-types";
 
 export const EditContact = props => {
-	const [state, setState] = useState({
-		//
-
-		address: null,
+    const {store , actions}  = useContext(context);
+    const[state,setState]=useState({
+        address: null,
 		agenda_slug: "gdan",
 		email: null,
 		full_name: null,
 		phone: null
-	});
-	// const updateState=contact=>{
-	//     setState(contact);
-	// }
-
-	return (
-		<div className="container">
-			<Context.Consumer>
-				{({ actions, store }) => {
-					var contact = store.allContacts.find(element => element.id == props.match.params.id); // setState(contact);
-
-					return (
-						<div>
-							<h1 className="text-center mt-5">Edit contact</h1>
-							<form>
+    });
+    useEffect (()=>{
+        const loadContact=async()=>{
+            const contact = await store.allContacts.find(element=> element.id==props.match.params.id);
+            setState(contact);
+        };
+        loadContact();
+    } ,[]);
+	
+		return(
+            <div className="container">
+					<div>
+						<h1 className="text-center mt-5">Edit contact</h1>
+						<form>
 								<div className="form-group">
 									<label>Full Name</label>
 									<input
@@ -37,7 +35,7 @@ export const EditContact = props => {
 										type="text"
 										className="form-control"
 										placeholder="Full Name"
-										defaultValue={contact.full_name}
+										defaultValue={state.full_name}
 									/>
 								</div>
 								<div className="form-group">
@@ -50,7 +48,7 @@ export const EditContact = props => {
 										type="email"
 										className="form-control"
 										placeholder="Enter email"
-										defaultValue={contact.email}
+										defaultValue={state.email}
 									/>
 								</div>
 								<div className="form-group">
@@ -63,7 +61,7 @@ export const EditContact = props => {
 										type="phone"
 										className="form-control"
 										placeholder="Enter phone"
-										defaultValue={contact.phone}
+										defaultValue={state.phone}
 									/>
 								</div>
 								<div className="form-group">
@@ -76,7 +74,7 @@ export const EditContact = props => {
 										type="text"
 										className="form-control"
 										placeholder="Enter address"
-										defaultValue={contact.address}
+										defaultValue={state.address}
 									/>
 								</div>
 								<button
@@ -87,7 +85,7 @@ export const EditContact = props => {
 											state.address,
 											state.phone,
 											state.email,
-											contact.id
+											state.id
 										);
 									}}
 									type="button"
@@ -98,13 +96,12 @@ export const EditContact = props => {
 									or get back to contacts
 								</Link>
 							</form>
-						</div>
-					);
-				}}
-			</Context.Consumer>
-		</div>
-	);
-};
+				</div>
+			
+            </div>
+        );
+
+    };
 
 EditContact.propTypes = {
 	match: PropTypes.object
