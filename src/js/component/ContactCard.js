@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { withRouter, Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import MikePhoto from "../../img/m101.jpg";
 import { Context } from "../store/appContext";
 
 const ContactCard = props => {
@@ -11,12 +10,24 @@ const ContactCard = props => {
 			<Context.Consumer>
 				{({ store, actions }) => (
 					<div className="row w-100">
-						<div className="col-12 col-sm-6 col-md-3 px-0">
-							<img
-								src={MikePhoto}
-								alt="Mike Anamendolla"
-								className="rounded-circle mx-auto d-block img-fluid"
-							/>
+						<div className="col-md-6 mb-4">
+							<form className="md-form">
+								<div className="file-field">
+									<div className="mb-4">
+										<img
+											src="https://mdbootstrap.com/img/Photos/Others/placeholder-avatar.jpg"
+											className="rounded-circle z-depth-1-half avatar-pic"
+											alt="example placeholder avatar"
+										/>
+									</div>
+									<div className="d-flex justify-content-center">
+										<div className="btn btn-mdb-color btn-rounded float-left">
+											<span>Add photo</span>
+											<input type="file" />
+										</div>
+									</div>
+								</div>
+							</form>
 						</div>
 						<div className="col-12 col-sm-6 col-md-9 text-center text-sm-left">
 							<div className=" float-right">
